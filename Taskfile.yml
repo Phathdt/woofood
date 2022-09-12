@@ -1,0 +1,12 @@
+version: '3'
+
+tasks:
+  user:
+    desc: user service
+    cmds:
+      - cd services/user_service && source .env && go run main.go
+
+  user-migrate:
+    desc: user service migrate
+    cmds:
+      - cd services/user_service_migrate && source .env && go run main.go {{.CLI_ARGS}}
