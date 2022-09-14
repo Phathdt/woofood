@@ -13,24 +13,9 @@ type SQLModel struct {
 	UpdatedAt *JSONTime `json:"updated_at,omitempty;" gorm:"column:updated_at;"`
 }
 
-func NewSQLModelWithStatus(status int) *SQLModel {
+func NewSQLModel() *SQLModel {
 	t := JSONTime(time.Now().UTC())
 	return &SQLModel{
-		CreatedAt: &t,
-		UpdatedAt: &t,
-	}
-}
-
-// For creating
-type SQLModelCreate struct {
-	ID        uint32    `json:"id" gorm:"id,PRIMARY_KEY"`
-	CreatedAt *JSONTime `json:"created_at,omitempty;" gorm:"column:created_at;"`
-	UpdatedAt *JSONTime `json:"updated_at,omitempty;" gorm:"column:updated_at;"`
-}
-
-func NewSQLModelCreateWithStatus(status int) SQLModelCreate {
-	t := JSONTime(time.Now().UTC())
-	return SQLModelCreate{
 		CreatedAt: &t,
 		UpdatedAt: &t,
 	}

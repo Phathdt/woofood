@@ -20,9 +20,10 @@ func Router(sc goservice.ServiceContext) func(engine *gin.Engine) {
 
 		api := engine.Group("api")
 		{
-			v1 := api.Group("v1")
+			users := api.Group("/users")
 			{
-				v1.GET("/users", ginuser.ListPost(sc))
+				users.POST("/signup", ginuser.SignupUser(sc))
+				users.POST("/login", ginuser.LoginUser(sc))
 			}
 		}
 	}
